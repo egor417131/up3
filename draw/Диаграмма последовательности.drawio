@@ -1,0 +1,702 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Страница-1" id="Yp2zmmD8-4xHLkRejwF6">
+    <mxGraphModel dx="1029" dy="574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" plantUmlData="{&#xa;  &quot;data&quot;: &quot;@startuml\ntitle Управление проектом — Диаграмма последовательности\n\nactor \&quot;Менеджер\\nпроекта\&quot; as PM\nparticipant \&quot;Система\\nуправления\\nпроектами\&quot; as SYS\nparticipant \&quot;База\\nданных\&quot; as DB\nactor \&quot;Исполнитель\&quot; as DEV\n\n== 1. Создание проекта ==\nPM -&gt; SYS: Создать проект\\n(название, сроки, бюджет)\nactivate SYS\nSYS -&gt; DB: INSERT project\nactivate DB\nDB --&gt; SYS: OK (project_id)\ndeactivate DB\nSYS --&gt; PM: Проект создан\ndeactivate SYS\n\n== 2. Добавление задач ==\nPM -&gt; SYS: Добавить задачи\\n(название, приоритет, дедлайн)\nactivate SYS\nSYS -&gt; DB: INSERT tasks\nactivate DB\nDB --&gt; SYS: OK (task_ids)\ndeactivate DB\nSYS --&gt; PM: Задачи добавлены\ndeactivate SYS\n\n== 3. Назначение исполнителей ==\nPM -&gt; SYS: Назначить исполнителей\\nна задачи\nactivate SYS\nSYS -&gt; DB: UPDATE task\\nSET assignee\nactivate DB\nDB --&gt; SYS: OK\ndeactivate DB\nSYS -&gt; DEV: Уведомление:\\n«Вам назначена задача»\nSYS --&gt; PM: Исполнители назначены\ndeactivate SYS\n\n== 4. Выполнение задачи ==\nDEV -&gt; SYS: Обновить статус задачи\\n(«В работе» → «Готово»)\nactivate SYS\nSYS -&gt; DB: UPDATE task\\nSET status\nactivate DB\nDB --&gt; SYS: OK\ndeactivate DB\nSYS -&gt; PM: Уведомление:\\n«Задача завершена»\nSYS --&gt; DEV: Статус обновлён\ndeactivate SYS\n\n== 5. Проверка и приёмка ==\nPM -&gt; SYS: Проверить результат задачи\nactivate SYS\nSYS -&gt; DB: SELECT task details\nactivate DB\nDB --&gt; SYS: Данные задачи\ndeactivate DB\n\nalt Результат принят\n    SYS -&gt; DB: UPDATE task\\nSET status = &#39;Принято&#39;\n    activate DB\n    DB --&gt; SYS: OK\n    deactivate DB\n    SYS --&gt; PM: Задача принята\nelse Результат отклонён\n    SYS -&gt; DB: UPDATE task\\nSET status = &#39;На доработку&#39;\n    activate DB\n    DB --&gt; SYS: OK\n    deactivate DB\n    SYS -&gt; DEV: Уведомление:\\n«Задача возвращена\\nна доработку»\n    SYS --&gt; PM: Задача отклонена\nend\ndeactivate SYS\n\n== 6. Завершение проекта ==\nPM -&gt; SYS: Закрыть проект\nactivate SYS\nSYS -&gt; DB: SELECT all tasks\\nWHERE status != &#39;Принято&#39;\nactivate DB\nDB --&gt; SYS: Список незакрытых\ndeactivate DB\n\nalt Все задачи закрыты\n    SYS -&gt; DB: UPDATE project\\nSET status = &#39;Завершён&#39;\n    activate DB\n    DB --&gt; SYS: OK\n    deactivate DB\n    SYS --&gt; PM: Проект завершён ✅\nelse Есть незакрытые задачи\n    SYS --&gt; PM: Ошибка: остались\\nнезакрытые задачи ⚠️\nend\ndeactivate SYS\n\n@enduml&quot;,&#xa;  &quot;config&quot;: null&#xa;}" id="9eeS_xcMk69nmNtlhnM8-2">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="pl_15" plantUmlBaseStyle="shape=umlLifeline;perimeter=lifelinePerimeter;participant=none;size=76;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=none;strokeColor=#181818;strokeWidth=0.5;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-3">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="shape=umlLifeline;perimeter=lifelinePerimeter;participant=none;size=76;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=none;strokeColor=#181818;strokeWidth=0.5;" vertex="1">
+            <mxGeometry height="1882.6" width="63.199999999999996" x="35" y="69" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Менеджер&#xa;проекта" plantUmlId="p_82" plantUmlBaseStyle="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" plantUmlBaseValue="Менеджер&#xa;проекта" id="9eeS_xcMk69nmNtlhnM8-4">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-3" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" vertex="1">
+            <mxGeometry height="38" width="24" x="19.599999999999998" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Менеджер&#xa;проекта" plantUmlId="pf_83" plantUmlBaseStyle="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" plantUmlBaseValue="Менеджер&#xa;проекта" id="9eeS_xcMk69nmNtlhnM8-5">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-3" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" vertex="1">
+            <mxGeometry height="38" width="24" x="19.599999999999998" y="1844.6" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Система&#xa;управления&#xa;проектами" plantUmlId="p_16" plantUmlBaseStyle="shape=umlLifeline;perimeter=lifelinePerimeter;size=63;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;rounded=1;absoluteArcSize=1;arcSize=5;fillColor=#E2E2F0;strokeColor=#181818;strokeWidth=0.5;fontColor=#000000;fontSize=14;whiteSpace=wrap;html=1;" plantUmlBaseValue="Система&#xa;управления&#xa;проектами" id="9eeS_xcMk69nmNtlhnM8-6">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="shape=umlLifeline;perimeter=lifelinePerimeter;size=63;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;rounded=1;absoluteArcSize=1;arcSize=5;fillColor=#E2E2F0;strokeColor=#181818;strokeWidth=0.5;fontColor=#000000;fontSize=14;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="1856.6" width="93" x="251.0653285714286" y="82" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="База&#xa;данных" plantUmlId="p_17" plantUmlBaseStyle="shape=umlLifeline;perimeter=lifelinePerimeter;size=63;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;rounded=1;absoluteArcSize=1;arcSize=5;fillColor=#E2E2F0;strokeColor=#181818;strokeWidth=0.5;fontColor=#000000;fontSize=14;whiteSpace=wrap;html=1;" plantUmlBaseValue="База&#xa;данных" id="9eeS_xcMk69nmNtlhnM8-7">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="shape=umlLifeline;perimeter=lifelinePerimeter;size=63;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;rounded=1;absoluteArcSize=1;arcSize=5;fillColor=#E2E2F0;strokeColor=#181818;strokeWidth=0.5;fontColor=#000000;fontSize=14;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="1856.6" width="61.4" x="475.79232857142864" y="82" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="pl_18" plantUmlBaseStyle="shape=umlLifeline;perimeter=lifelinePerimeter;participant=none;size=57;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=none;strokeColor=#181818;strokeWidth=0.5;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-8">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="shape=umlLifeline;perimeter=lifelinePerimeter;participant=none;size=57;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=none;strokeColor=#181818;strokeWidth=0.5;" vertex="1">
+            <mxGeometry height="1863.6" width="86.9" x="547.1923285714286" y="88" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Исполнитель" plantUmlId="p_84" plantUmlBaseStyle="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" plantUmlBaseValue="Исполнитель" id="9eeS_xcMk69nmNtlhnM8-9">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-8" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" vertex="1">
+            <mxGeometry height="38" width="24" x="31.450000000000045" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Исполнитель" plantUmlId="pf_85" plantUmlBaseStyle="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" plantUmlBaseValue="Исполнитель" id="9eeS_xcMk69nmNtlhnM8-10">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-8" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" vertex="1">
+            <mxGeometry height="57" width="24" x="31.45" y="1806.6" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="grpframe_19" plantUmlBaseStyle="rounded=0;fillColor=none;strokeColor=#000000;strokeWidth=1.5;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-11">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=none;strokeColor=#000000;strokeWidth=1.5;" vertex="1">
+            <mxGeometry height="320.79999999999995" width="613.0923285714287" x="31" y="1175" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="alt" plantUmlId="grptab_20" plantUmlBaseStyle="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontSize=13;fontStyle=1;align=left;spacingLeft=10;verticalAlign=middle;html=1;" plantUmlBaseValue="alt" id="9eeS_xcMk69nmNtlhnM8-12">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontSize=13;fontStyle=1;align=left;spacingLeft=10;verticalAlign=middle;html=1;" vertex="1">
+            <mxGeometry height="19.7" width="62.138642857142855" x="31" y="1175" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="[Результат принят]" plantUmlId="grpcond_21" plantUmlBaseStyle="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;" plantUmlBaseValue="[Результат принят]" id="9eeS_xcMk69nmNtlhnM8-13">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;" vertex="1">
+            <mxGeometry height="15" width="118.77887857142859" x="103.13864285714286" y="1178" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="grpelse_22" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=2 2;exitX=0;exitY=0.41;exitDx=0;exitDy=0;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-14">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-11" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=2 2;exitX=0;exitY=0.41;exitDx=0;exitDy=0;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="31" y="1306.5" as="sourcePoint" />
+              <mxPoint x="644.0923285714287" y="1306.5" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="[Результат отклонён]" plantUmlId="grpelselbl_23" plantUmlBaseStyle="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;" plantUmlBaseValue="[Результат отклонён]" id="9eeS_xcMk69nmNtlhnM8-15">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;" vertex="1">
+            <mxGeometry height="15" width="131.9788785714286" x="36" y="1308.5" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="grpframe_24" plantUmlBaseStyle="rounded=0;fillColor=none;strokeColor=#000000;strokeWidth=1.5;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-16">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=none;strokeColor=#000000;strokeWidth=1.5;" vertex="1">
+            <mxGeometry height="194.79999999999995" width="516.1923285714286" x="31" y="1664.8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="alt" plantUmlId="grptab_25" plantUmlBaseStyle="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontSize=13;fontStyle=1;align=left;spacingLeft=10;verticalAlign=middle;html=1;" plantUmlBaseValue="alt" id="9eeS_xcMk69nmNtlhnM8-17">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontSize=13;fontStyle=1;align=left;spacingLeft=10;verticalAlign=middle;html=1;" vertex="1">
+            <mxGeometry height="19.7" width="62.138642857142855" x="31" y="1664.8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="[Все задачи закрыты]" plantUmlId="grpcond_26" plantUmlBaseStyle="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;" plantUmlBaseValue="[Все задачи закрыты]" id="9eeS_xcMk69nmNtlhnM8-18">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;" vertex="1">
+            <mxGeometry height="15" width="129.00440000000003" x="103.13864285714286" y="1667.8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="grpelse_27" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=2 2;exitX=0;exitY=0.675;exitDx=0;exitDy=0;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-19">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-16" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=2 2;exitX=0;exitY=0.675;exitDx=0;exitDy=0;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="31" y="1796.3" as="sourcePoint" />
+              <mxPoint x="547.1923285714286" y="1796.3" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="[Есть незакрытые задачи]" plantUmlId="grpelselbl_28" plantUmlBaseStyle="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;" plantUmlBaseValue="[Есть незакрытые задачи]" id="9eeS_xcMk69nmNtlhnM8-20">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;" vertex="1">
+            <mxGeometry height="15" width="155.40440000000004" x="36" y="1798.3" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Создать проект&#xa;(название, сроки, бюджет)" plantUmlId="msg_32" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Создать проект&#xa;(название, сроки, бюджет)" id="9eeS_xcMk69nmNtlhnM8-21">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-3" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-56">
+            <mxGeometry relative="1" x="-0.211" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="239" />
+              </Array>
+              <mxPoint x="66.6" y="239" as="sourcePoint" />
+              <mxPoint x="292.5653285714286" y="239" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="INSERT project" plantUmlId="msg_33" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="INSERT project" id="9eeS_xcMk69nmNtlhnM8-22">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-56" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-62">
+            <mxGeometry relative="1" x="-0.466" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="271" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="271" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="271" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="OK (project_id)" plantUmlId="msg_34" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="OK (project_id)" id="9eeS_xcMk69nmNtlhnM8-23">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-62" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-56">
+            <mxGeometry relative="1" x="0.358" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="303" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="303" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="303" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Проект создан" plantUmlId="msg_35" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Проект создан" id="9eeS_xcMk69nmNtlhnM8-24">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-56" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-3">
+            <mxGeometry relative="1" x="0.442" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="335" />
+              </Array>
+              <mxPoint x="292.5653285714286" y="335" as="sourcePoint" />
+              <mxPoint x="66.6" y="335" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Добавить задачи&#xa;(название, приоритет, дедлайн)" plantUmlId="msg_39" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Добавить задачи&#xa;(название, приоритет, дедлайн)" id="9eeS_xcMk69nmNtlhnM8-25">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-3" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-57">
+            <mxGeometry relative="1" x="-0.049" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="426" />
+              </Array>
+              <mxPoint x="66.6" y="426" as="sourcePoint" />
+              <mxPoint x="292.5653285714286" y="426" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="INSERT tasks" plantUmlId="msg_40" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="INSERT tasks" id="9eeS_xcMk69nmNtlhnM8-26">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-57" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-63">
+            <mxGeometry relative="1" x="-0.523" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="458" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="458" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="458" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="OK (task_ids)" plantUmlId="msg_41" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="OK (task_ids)" id="9eeS_xcMk69nmNtlhnM8-27">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-63" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-57">
+            <mxGeometry relative="1" x="0.414" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="490" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="490" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="490" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Задачи добавлены" plantUmlId="msg_42" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Задачи добавлены" id="9eeS_xcMk69nmNtlhnM8-28">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-57" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-3">
+            <mxGeometry relative="1" x="0.344" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="522" />
+              </Array>
+              <mxPoint x="292.5653285714286" y="522" as="sourcePoint" />
+              <mxPoint x="66.6" y="522" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Назначить исполнителей&#xa;на задачи" plantUmlId="msg_46" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Назначить исполнителей&#xa;на задачи" id="9eeS_xcMk69nmNtlhnM8-29">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-3" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-58">
+            <mxGeometry relative="1" x="-0.238" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="613" />
+              </Array>
+              <mxPoint x="66.6" y="613" as="sourcePoint" />
+              <mxPoint x="292.5653285714286" y="613" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="UPDATE task&#xa;SET assignee" plantUmlId="msg_47" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="UPDATE task&#xa;SET assignee" id="9eeS_xcMk69nmNtlhnM8-30">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-58" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-64">
+            <mxGeometry relative="1" x="-0.521" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="660" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="660" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="660" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="OK" plantUmlId="msg_48" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="OK" id="9eeS_xcMk69nmNtlhnM8-31">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-64" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-58">
+            <mxGeometry relative="1" x="0.736" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="692" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="692" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="692" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Уведомление:&#xa;«Вам назначена задача»" plantUmlId="msg_49" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Уведомление:&#xa;«Вам назначена задача»" id="9eeS_xcMk69nmNtlhnM8-32">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-58" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-8">
+            <mxGeometry relative="1" x="-0.414" as="geometry">
+              <Array as="points">
+                <mxPoint x="447" y="739" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="739" as="sourcePoint" />
+              <mxPoint x="590.6423285714286" y="739" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Исполнители назначены" plantUmlId="msg_50" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Исполнители назначены" id="9eeS_xcMk69nmNtlhnM8-33">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-58" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-3">
+            <mxGeometry relative="1" x="0.182" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="771" />
+              </Array>
+              <mxPoint x="292.5653285714286" y="771" as="sourcePoint" />
+              <mxPoint x="66.6" y="771" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Обновить статус задачи&#xa;(«В работе» → «Готово»)" plantUmlId="msg_54" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Обновить статус задачи&#xa;(«В работе» → «Готово»)" id="9eeS_xcMk69nmNtlhnM8-34">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-8" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-59">
+            <mxGeometry relative="1" x="0.344" as="geometry">
+              <Array as="points">
+                <mxPoint x="447" y="862" />
+              </Array>
+              <mxPoint x="590.6423285714286" y="862" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="862" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="UPDATE task&#xa;SET status" plantUmlId="msg_55" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="UPDATE task&#xa;SET status" id="9eeS_xcMk69nmNtlhnM8-35">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-59" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-65">
+            <mxGeometry relative="1" x="-0.525" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="909" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="909" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="909" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="OK" plantUmlId="msg_56" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="OK" id="9eeS_xcMk69nmNtlhnM8-36">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-65" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-59">
+            <mxGeometry relative="1" x="0.736" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="941" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="941" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="941" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Уведомление:&#xa;«Задача завершена»" plantUmlId="msg_57" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Уведомление:&#xa;«Задача завершена»" id="9eeS_xcMk69nmNtlhnM8-37">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-59" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-3">
+            <mxGeometry relative="1" x="0.279" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="988" />
+              </Array>
+              <mxPoint x="292.5653285714286" y="988" as="sourcePoint" />
+              <mxPoint x="66.6" y="988" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Статус обновлён" plantUmlId="msg_58" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Статус обновлён" id="9eeS_xcMk69nmNtlhnM8-38">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-59" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-8">
+            <mxGeometry relative="1" x="-0.581" as="geometry">
+              <Array as="points">
+                <mxPoint x="447" y="1020" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="1020" as="sourcePoint" />
+              <mxPoint x="590.6423285714286" y="1020" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Проверить результат задачи" plantUmlId="msg_62" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Проверить результат задачи" id="9eeS_xcMk69nmNtlhnM8-39">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-3" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-60">
+            <mxGeometry relative="1" x="-0.123" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="1096" />
+              </Array>
+              <mxPoint x="66.6" y="1096" as="sourcePoint" />
+              <mxPoint x="292.5653285714286" y="1096" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="SELECT task details" plantUmlId="msg_63" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="SELECT task details" id="9eeS_xcMk69nmNtlhnM8-40">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-60" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-66">
+            <mxGeometry relative="1" x="-0.32" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1128" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="1128" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="1128" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Данные задачи" plantUmlId="msg_64" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Данные задачи" id="9eeS_xcMk69nmNtlhnM8-41">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-66" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-60">
+            <mxGeometry relative="1" x="0.366" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1160" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="1160" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="1160" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="UPDATE task&#xa;SET status = &#39;Принято&#39;" plantUmlId="msg_65" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="UPDATE task&#xa;SET status = &#39;Принято&#39;" id="9eeS_xcMk69nmNtlhnM8-42">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-60" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-67">
+            <mxGeometry relative="1" x="-0.223" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1233.5" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="1233.5" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="1233.5" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="OK" plantUmlId="msg_66" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="OK" id="9eeS_xcMk69nmNtlhnM8-43">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-67" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-60">
+            <mxGeometry relative="1" x="0.736" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1265.5" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="1265.5" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="1265.5" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Задача принята" plantUmlId="msg_67" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Задача принята" id="9eeS_xcMk69nmNtlhnM8-44">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-60" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-3">
+            <mxGeometry relative="1" x="0.409" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="1297.5" />
+              </Array>
+              <mxPoint x="292.5653285714286" y="1297.5" as="sourcePoint" />
+              <mxPoint x="66.6" y="1297.5" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="UPDATE task&#xa;SET status = &#39;На доработку&#39;" plantUmlId="msg_68" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="UPDATE task&#xa;SET status = &#39;На доработку&#39;" id="9eeS_xcMk69nmNtlhnM8-45">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-60" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-68">
+            <mxGeometry relative="1" x="-0.055" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1361.8" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="1361.8" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="1361.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="OK" plantUmlId="msg_69" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="OK" id="9eeS_xcMk69nmNtlhnM8-46">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-68" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-60">
+            <mxGeometry relative="1" x="0.736" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1393.8" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="1393.8" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="1393.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Уведомление:&#xa;«Задача возвращена&#xa;на доработку»" plantUmlId="msg_70" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Уведомление:&#xa;«Задача возвращена&#xa;на доработку»" id="9eeS_xcMk69nmNtlhnM8-47">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-60" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-8">
+            <mxGeometry relative="1" x="-0.504" as="geometry">
+              <Array as="points">
+                <mxPoint x="447" y="1455.8" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="1455.8" as="sourcePoint" />
+              <mxPoint x="590.6423285714286" y="1455.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Задача отклонена" plantUmlId="msg_71" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Задача отклонена" id="9eeS_xcMk69nmNtlhnM8-48">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-60" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-3">
+            <mxGeometry relative="1" x="0.344" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="1487.8" />
+              </Array>
+              <mxPoint x="292.5653285714286" y="1487.8" as="sourcePoint" />
+              <mxPoint x="66.6" y="1487.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Закрыть проект" plantUmlId="msg_75" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Закрыть проект" id="9eeS_xcMk69nmNtlhnM8-49">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-3" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-61">
+            <mxGeometry relative="1" x="-0.498" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="1570.8" />
+              </Array>
+              <mxPoint x="66.6" y="1570.8" as="sourcePoint" />
+              <mxPoint x="292.5653285714286" y="1570.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="SELECT all tasks&#xa;WHERE status != &#39;Принято&#39;" plantUmlId="msg_76" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="SELECT all tasks&#xa;WHERE status != &#39;Принято&#39;" id="9eeS_xcMk69nmNtlhnM8-50">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-61" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-69">
+            <mxGeometry relative="1" x="-0.099" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1617.8" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="1617.8" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="1617.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Список незакрытых" plantUmlId="msg_77" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Список незакрытых" id="9eeS_xcMk69nmNtlhnM8-51">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-69" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-61">
+            <mxGeometry relative="1" x="0.218" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1649.8" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="1649.8" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="1649.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="UPDATE project&#xa;SET status = &#39;Завершён&#39;" plantUmlId="msg_78" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="UPDATE project&#xa;SET status = &#39;Завершён&#39;" id="9eeS_xcMk69nmNtlhnM8-52">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-61" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-70">
+            <mxGeometry relative="1" x="-0.187" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1723.3" />
+              </Array>
+              <mxPoint x="302.5653285714286" y="1723.3" as="sourcePoint" />
+              <mxPoint x="501.49232857142863" y="1723.3" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="OK" plantUmlId="msg_79" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="OK" id="9eeS_xcMk69nmNtlhnM8-53">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-70" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-61">
+            <mxGeometry relative="1" x="0.736" as="geometry">
+              <Array as="points">
+                <mxPoint x="402" y="1755.3" />
+              </Array>
+              <mxPoint x="501.49232857142863" y="1755.3" as="sourcePoint" />
+              <mxPoint x="302.5653285714286" y="1755.3" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Проект завершён ✅" plantUmlId="msg_80" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Проект завершён ✅" id="9eeS_xcMk69nmNtlhnM8-54">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-61" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-3">
+            <mxGeometry relative="1" x="0.326" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="1787.3" />
+              </Array>
+              <mxPoint x="292.5653285714286" y="1787.3" as="sourcePoint" />
+              <mxPoint x="66.6" y="1787.3" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Ошибка: остались&#xa;незакрытые задачи ⚠️" plantUmlId="msg_81" plantUmlBaseStyle="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="Ошибка: остались&#xa;незакрытые задачи ⚠️" id="9eeS_xcMk69nmNtlhnM8-55">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" source="9eeS_xcMk69nmNtlhnM8-61" style="endArrow=classic;endFill=1;endSize=9;html=1;rounded=0;edgeStyle=none;curved=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" target="9eeS_xcMk69nmNtlhnM8-3">
+            <mxGeometry relative="1" x="0.204" as="geometry">
+              <Array as="points">
+                <mxPoint x="180" y="1851.6" />
+              </Array>
+              <mxPoint x="292.5653285714286" y="1851.6" as="sourcePoint" />
+              <mxPoint x="66.6" y="1851.6" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_0" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-56">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="96" width="10" x="292.5653285714286" y="239" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_1" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-57">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="96" width="10" x="292.5653285714286" y="426" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_2" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-58">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="158" width="10" x="292.5653285714286" y="613" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_3" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-59">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="158" width="10" x="292.5653285714286" y="862" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_4" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-60">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="398.79999999999995" width="10" x="292.5653285714286" y="1096" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_5" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-61">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="287.79999999999995" width="10" x="292.5653285714286" y="1570.8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_6" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-62">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="271" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_7" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-63">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="458" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_8" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-64">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="660" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_9" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-65">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="909" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_10" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-66">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="1128" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_11" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-67">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="1233.5" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_12" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-68">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="1361.8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_13" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-69">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="1617.8" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="act_14" plantUmlBaseStyle="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-70">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#FFFFFF;strokeColor=#181818;strokeWidth=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;portConstraint=eastwest;" vertex="1">
+            <mxGeometry height="32" width="10" x="501.49232857142863" y="1723.3" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_29" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-71">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="179" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="179" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_30" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-72">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="182" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="182" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="1. Создание проекта" plantUmlId="div_31" plantUmlBaseStyle="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" plantUmlBaseValue="1. Создание проекта" id="9eeS_xcMk69nmNtlhnM8-73">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" vertex="1">
+            <mxGeometry height="25.7" width="155.63707142857146" x="256.72762857142857" y="166.1" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_36" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-74">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="366" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="366" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_37" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-75">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="369" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="369" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="2. Добавление задач" plantUmlId="div_38" plantUmlBaseStyle="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" plantUmlBaseValue="2. Добавление задач" id="9eeS_xcMk69nmNtlhnM8-76">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" vertex="1">
+            <mxGeometry height="25.7" width="155.63707142857146" x="256.72762857142857" y="353.1" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_43" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-77">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="553" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="553" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_44" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-78">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="556" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="556" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="3. Назначение исполнителей" plantUmlId="div_45" plantUmlBaseStyle="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" plantUmlBaseValue="3. Назначение исполнителей" id="9eeS_xcMk69nmNtlhnM8-79">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" vertex="1">
+            <mxGeometry height="25.7" width="210.2370714285715" x="229.42762857142856" y="540.1" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_51" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-80">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="802" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="802" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_52" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-81">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="805" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="805" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="4. Выполнение задачи" plantUmlId="div_53" plantUmlBaseStyle="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" plantUmlBaseValue="4. Выполнение задачи" id="9eeS_xcMk69nmNtlhnM8-82">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" vertex="1">
+            <mxGeometry height="25.7" width="163.43707142857147" x="252.8276285714286" y="789.1" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_59" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-83">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="1051" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="1051" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_60" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-84">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="1054" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="1054" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="5. Проверка и приёмка" plantUmlId="div_61" plantUmlBaseStyle="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" plantUmlBaseValue="5. Проверка и приёмка" id="9eeS_xcMk69nmNtlhnM8-85">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" vertex="1">
+            <mxGeometry height="25.7" width="167.72177857142862" x="250.68527500000002" y="1038.1" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_72" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-86">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="1525.8" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="1525.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" plantUmlId="divbar_73" plantUmlBaseStyle="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" plantUmlBaseValue="" id="9eeS_xcMk69nmNtlhnM8-87">
+          <mxCell edge="1" parent="9eeS_xcMk69nmNtlhnM8-2" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;curved=0;rounded=0;endSize=6;fontSize=11;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="1528.8" as="sourcePoint" />
+              <mxPoint x="639.0923285714287" y="1528.8" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="6. Завершение проекта" plantUmlId="div_74" plantUmlBaseStyle="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" plantUmlBaseValue="6. Завершение проекта" id="9eeS_xcMk69nmNtlhnM8-88">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;html=1;" vertex="1">
+            <mxGeometry height="25.7" width="171.23707142857148" x="248.92762857142858" y="1512.8999999999999" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Управление проектом — Диаграмма последовательности" plantUmlId="title_86" plantUmlBaseStyle="text;html=1;fillColor=none;strokeColor=none;fontSize=14;fontStyle=1;fontColor=#000000;align=center;verticalAlign=middle;" plantUmlBaseValue="Управление проектом — Диаграмма последовательности" id="9eeS_xcMk69nmNtlhnM8-89">
+          <mxCell parent="9eeS_xcMk69nmNtlhnM8-2" style="text;html=1;fillColor=none;strokeColor=none;fontSize=14;fontStyle=1;fontColor=#000000;align=center;verticalAlign=middle;" vertex="1">
+            <mxGeometry height="24" width="414.8571999999997" x="127.11756428571448" y="30" as="geometry" />
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

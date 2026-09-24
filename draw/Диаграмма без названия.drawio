@@ -1,19 +1,21 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Страница-1" id="Yp2zmmD8-4xHLkRejwF6">
-    <mxGraphModel dx="1715" dy="-212" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="890" dy="-662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <UserObject label="Система управления проектами" mermaidId="n:SYS" mermaidBaseStyle="html=1;shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};lifelineDashed=0;strokeWidth=2;rounded=1;absoluteArcSize=1;arcSize=6;lifelineColor=light-dark(#9370DB,#cccccc);size=65;lifelineMirror=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="Система управления проектами" id="sbkZ0Bxp7cCfhfeYdzu--96">
-          <mxCell parent="1" style="html=1;shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};lifelineDashed=0;strokeWidth=2;rounded=1;absoluteArcSize=1;arcSize=6;lifelineColor=light-dark(#9370DB,#cccccc);size=65;lifelineMirror=0;fontFamily=Helvetica;fontSize=14;" vertex="1">
-            <mxGeometry height="1959" width="240" x="855" y="1270" as="geometry" />
-          </mxCell>
-        </UserObject>
-        <UserObject label="База данных" mermaidId="n:DB" mermaidBaseStyle="html=1;shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};lifelineDashed=0;strokeWidth=2;rounded=1;absoluteArcSize=1;arcSize=6;lifelineColor=light-dark(#9370DB,#cccccc);size=65;lifelineMirror=1;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;fontSize=16;" mermaidBaseValue="База данных" id="sbkZ0Bxp7cCfhfeYdzu--102">
-          <mxCell parent="1" style="html=1;shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};lifelineDashed=0;strokeWidth=2;rounded=1;absoluteArcSize=1;arcSize=6;lifelineColor=light-dark(#9370DB,#cccccc);size=65;lifelineMirror=0;fontFamily=Helvetica;fontSize=14;" vertex="1">
-            <mxGeometry height="1959" width="150" x="1241" y="1270" as="geometry" />
-          </mxCell>
-        </UserObject>
+        <mxCell id="sbkZ0Bxp7cCfhfeYdzu--207" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=14;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="974.5" y="1340" as="sourcePoint" />
+            <mxPoint x="974.5" y="3240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sbkZ0Bxp7cCfhfeYdzu--206" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=14;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1315.5" y="1330" as="sourcePoint" />
+            <mxPoint x="1315.5" y="3240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <UserObject label="Создать проект (название, сроки, бюджет)" mermaidId="e:PM-&gt;SYS#0" mermaidBaseStyle="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Создать проект (название, сроки, бюджет)" id="sbkZ0Bxp7cCfhfeYdzu--120">
           <mxCell edge="1" parent="1" style="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;" target="sbkZ0Bxp7cCfhfeYdzu--97">
             <mxGeometry relative="1" as="geometry">
@@ -236,7 +238,8 @@
         </UserObject>
         <UserObject label="Установить статус задачи &quot;На доработку&quot;" mermaidId="e:SYS-&gt;DB#5" mermaidBaseStyle="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Установить статус задачи &quot;На доработку&quot;" id="sbkZ0Bxp7cCfhfeYdzu--160">
           <mxCell edge="1" parent="1" source="sbkZ0Bxp7cCfhfeYdzu--100" style="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;" target="sbkZ0Bxp7cCfhfeYdzu--108">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="0.0272" y="5" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="1146" y="2545" />
               </Array>
@@ -247,7 +250,8 @@
         </UserObject>
         <UserObject label="Подтверждение обновления" mermaidId="e:DB-&gt;SYS#5" mermaidBaseStyle="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Подтверждение обновления" id="sbkZ0Bxp7cCfhfeYdzu--162">
           <mxCell edge="1" parent="1" source="sbkZ0Bxp7cCfhfeYdzu--108" style="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;" target="sbkZ0Bxp7cCfhfeYdzu--100">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="-0.0036" y="-5" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="1146" y="2589" />
               </Array>
@@ -258,7 +262,8 @@
         </UserObject>
         <UserObject label="Уведомление: Задача возвращена с комментариями" mermaidId="e:SYS-&gt;DEV#2" mermaidBaseStyle="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Уведомление: Задача возвращена с комментариями" id="sbkZ0Bxp7cCfhfeYdzu--164">
           <mxCell edge="1" parent="1" source="sbkZ0Bxp7cCfhfeYdzu--100" style="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="0.0096" y="9" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="1258" y="2633" />
               </Array>
@@ -269,7 +274,8 @@
         </UserObject>
         <UserObject label="Задача отправлена на исправление" mermaidId="e:SYS-&gt;PM#4" mermaidBaseStyle="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Задача отправлена на исправление" id="sbkZ0Bxp7cCfhfeYdzu--166">
           <mxCell edge="1" parent="1" source="sbkZ0Bxp7cCfhfeYdzu--100" style="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="0.0195" y="-4" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="728" y="2677" />
               </Array>
@@ -280,7 +286,8 @@
         </UserObject>
         <UserObject label="Запрос на закрытие проекта" mermaidId="e:PM-&gt;SYS#3" mermaidBaseStyle="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Запрос на закрытие проекта" id="sbkZ0Bxp7cCfhfeYdzu--168">
           <mxCell edge="1" parent="1" style="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;" target="sbkZ0Bxp7cCfhfeYdzu--101">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="0.0105" y="4" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="728" y="2780" />
               </Array>
@@ -291,7 +298,8 @@
         </UserObject>
         <UserObject label="Проверить наличие незакрытых задач" mermaidId="e:SYS-&gt;DB#6" mermaidBaseStyle="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Проверить наличие незакрытых задач" id="sbkZ0Bxp7cCfhfeYdzu--170">
           <mxCell edge="1" parent="1" source="sbkZ0Bxp7cCfhfeYdzu--101" style="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;" target="sbkZ0Bxp7cCfhfeYdzu--109">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="0.0272" y="4" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="1146" y="2824" />
               </Array>
@@ -302,7 +310,8 @@
         </UserObject>
         <UserObject label="Результат проверки задач" mermaidId="e:DB-&gt;SYS#6" mermaidBaseStyle="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Результат проверки задач" id="sbkZ0Bxp7cCfhfeYdzu--172">
           <mxCell edge="1" parent="1" source="sbkZ0Bxp7cCfhfeYdzu--109" style="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;" target="sbkZ0Bxp7cCfhfeYdzu--101">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="-0.0272" y="-8" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="1146" y="2868" />
               </Array>
@@ -313,7 +322,8 @@
         </UserObject>
         <UserObject label="Установить статус проекта &quot;Завершен&quot;" mermaidId="e:SYS-&gt;DB#7" mermaidBaseStyle="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Установить статус проекта &quot;Завершен&quot;" id="sbkZ0Bxp7cCfhfeYdzu--174">
           <mxCell edge="1" parent="1" source="sbkZ0Bxp7cCfhfeYdzu--101" style="endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;" target="sbkZ0Bxp7cCfhfeYdzu--110">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="0.0272" y="7" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="1146" y="2957" />
               </Array>
@@ -324,7 +334,8 @@
         </UserObject>
         <UserObject label="Подтверждение обновления" mermaidId="e:DB-&gt;SYS#7" mermaidBaseStyle="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=16;labelBackgroundColor=none;strokeWidth=1.5;strokeColor=light-dark(#333333,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="Подтверждение обновления" id="sbkZ0Bxp7cCfhfeYdzu--176">
           <mxCell edge="1" parent="1" source="sbkZ0Bxp7cCfhfeYdzu--110" style="dashed=1;fixDash=1;dashPattern=3 3;endArrow=block;endSize=9;verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=14;labelBackgroundColor=none;strokeWidth=2;fontColor=light-dark(#333333,#cccccc);fontFamily=Helvetica;" target="sbkZ0Bxp7cCfhfeYdzu--101">
-            <mxGeometry relative="1" as="geometry">
+            <mxGeometry relative="1" x="-0.0119" y="-1" as="geometry">
+              <mxPoint as="offset" />
               <Array as="points">
                 <mxPoint x="1146" y="3001" />
               </Array>
@@ -428,14 +439,20 @@
         <mxCell id="sbkZ0Bxp7cCfhfeYdzu--198" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=14;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <mxPoint x="1538" y="1323" as="sourcePoint" />
-            <mxPoint x="1538" y="3253" as="targetPoint" />
+            <mxPoint x="1538" y="3240" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="sbkZ0Bxp7cCfhfeYdzu--199" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=14;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <mxPoint x="483" y="1316" as="sourcePoint" />
-            <mxPoint x="483" y="3246" as="targetPoint" />
+            <mxPoint x="483" y="3240" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="sbkZ0Bxp7cCfhfeYdzu--204" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;Система управления проектами&lt;/span&gt;" vertex="1">
+          <mxGeometry height="80" width="170" x="890" y="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="sbkZ0Bxp7cCfhfeYdzu--205" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;База данных&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1256" y="1270" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
